@@ -20,44 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     Num = @11;
-    // Initialize Window
-//    ViewController *VC;
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    
-//
-//    [self.window setBackgroundColor:[UIColor whiteColor]];
-//    [self.window makeKeyAndVisible];
-    
-    
-    // Create Managed Object
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"User" inManagedObjectContext:self.managedObjectContext];
-    NSManagedObject *newUser = [[NSManagedObject alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
-    
-//    [newUser setValue:@"Mac" forKey:@"location"];
-//    [newUser setValue:Num forKey:@"age"];
-    
-    NSError *error = nil;
-    
-    if (![newUser.managedObjectContext save:&error]) {
-        NSLog(@"Unable to save managed object context.");
-        NSLog(@"%@, %@", error, error.localizedDescription);
-    }
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-//    NSError *error = nil;
-    NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
-    if (error) {
-        NSLog(@"Unable to execute fetch request.");
-        NSLog(@"%@, %@", error, error.localizedDescription);
-        
-    } else {
-        NSLog(@"%@", result);
-    }
     return YES;
 }
 

@@ -116,6 +116,15 @@
 }
 
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    [self getData];
+    User *user = userArray[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", user.age];
+    
+    //[self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return 1;
@@ -129,15 +138,6 @@
 
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [self getData];
-    User *user = userArray[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", user];
-    
-    //[self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
 
 
 @end
