@@ -14,6 +14,7 @@
 @implementation User (CoreDataProperties)
 
 @dynamic age;
+@dynamic name;
 @dynamic location;
 
 @end

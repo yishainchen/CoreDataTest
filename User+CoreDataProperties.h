@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface User (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSNumber *age;
+@property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *location;
 
 @end

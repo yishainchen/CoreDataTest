@@ -24,7 +24,10 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addUser)];
+    self.navigationItem.rightBarButtonItem = addButton;
     [self getData];
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -35,6 +38,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)addUser
+{
+
+    [self performSegueWithIdentifier:@"showAddView" sender:nil];
+    
+    return;
+//    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:delegate.managedObjectContext];
+//    User *record = [[User alloc] initWithEntity:entity insertIntoManagedObjectContext:delegate.managedObjectContext];
+//    record.age = @(5);
+//    record.location = @"天不⽼,情難絕。⼼似雙絲網,中有千千結。";
+//    record.name = @"張三影";
+//    NSError *error = nil;
+//    [delegate.managedObjectContext save:&error];
+//    
+//    [self getData];
+//    [self.tableView reloadData];
+}
 
 -(void)getData
 {
@@ -52,6 +73,25 @@
     userArray = [[delegate.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
     NSLog(@"arr = %@",userArray);
     
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+        
+        AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        
+        User *user = userArray[indexPath.row];
+        
+        [userArray removeObject:user];
+        
+        [delegate.managedObjectContext deleteObject:user];
+        [delegate.managedObjectContext save:nil];
+        
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)insertNewObject:(id)sender {

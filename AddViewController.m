@@ -30,7 +30,7 @@
     if(self.user) {
         
         self.user.age = @([self.ageText.text intValue]);
-        
+        self.user.name = self.nameText.text;
         self.user.location = self.locationTxt.text;
     }
     else {

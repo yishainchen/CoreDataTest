@@ -21,13 +21,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VrI-Qv-hKg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="VrI-Qv-hKg">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VrI-Qv-hKg" id="wRM-Ft-5NL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="8rK-vx-Tgf" kind="push" identifier="editItem" id="WGC-Fw-h5U"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -35,6 +38,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Master" id="Sbv-69-Zhk"/>
+                    <connections>
+                        <segue destination="8rK-vx-Tgf" kind="push" identifier="showAddView" id="yrp-bF-0PR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,6 +76,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="tkT-dg-U5o"/>
                     <connections>
                         <outlet property="ageText" destination="gDV-7Y-Z0C" id="uli-fB-q5I"/>
                         <outlet property="locationTxt" destination="ZBC-ae-t5P" id="FzD-Um-V8p"/>
@@ -99,4 +106,7 @@
             <point key="canvasLocation" x="114" y="238"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="yrp-bF-0PR"/>
+    </inferredMetricsTieBreakers>
 </document>
